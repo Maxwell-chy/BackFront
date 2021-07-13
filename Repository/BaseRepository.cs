@@ -13,10 +13,10 @@ namespace Repository
         public BaseRepository(ISqlSugarClient context = null) : base(context)
         {
             base.Context = DbScoped.Sugar;
-            base.Context.CodeFirst.InitTables(
-            typeof(Customer),
-            typeof(Score)
-            );
+            //base.Context.CodeFirst.InitTables(
+            //typeof(Customer),
+            //typeof(Score)
+            //);
         }
         public async Task<bool> InsertItem(TEntity entity)
         {
