@@ -8,9 +8,7 @@ namespace StuManage.Model
 {
     public class Helper
     {
-        public string Examname { get; set; }
         public string Id { get; set; }
-        public string PassWord { get; set; }
-
+        public string password { get; set; }
     }
 }

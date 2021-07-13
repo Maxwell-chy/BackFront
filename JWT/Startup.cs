@@ -36,8 +36,8 @@ namespace StuManage.JWT
                 IsAutoCloseConnection = true
             });
             #endregion
-            services.AddScoped<UserRepository>();
-            services.AddScoped<UserService>();
+            services.AddScoped<CustomerRepository>();
+            services.AddScoped<CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

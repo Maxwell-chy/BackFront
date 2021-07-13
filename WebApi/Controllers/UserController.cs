@@ -14,58 +14,58 @@ namespace StuManage.WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    public class UserController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-        private readonly UserService _UserService;
+        private readonly CustomerService _CustomerService;
 
-        public UserController(UserService UserService)
+        public CustomerController(CustomerService CustomerService)
         {
-            this._UserService = UserService;
+            this._CustomerService = CustomerService;
         }
 
         [HttpGet("GetList")]
         public async Task<ActionResult<ApiResult>> GetList()
         {
-            List<User> List = await _UserService.FindItemList();
+            List<Customer> List = await _CustomerService.FindItemList();
             if (List == null)
-                return ApiResultHelper.Error("There is no any Users information in DB");
+                return ApiResultHelper.Error("There is no any Customers information in DB");
             return ApiResultHelper.Success(List);
         }
 
         [HttpGet("GetById")]
-        public async Task<ActionResult<ApiResult>> GetByUserId(string id)
+        public async Task<ActionResult<ApiResult>> GetByCustomerId(string id)
         {
-            User data = await _UserService.FindItem(c => c.Id == id);
+            Customer data = await _CustomerService.FindItem(c => c.id == id);
             if (data == null)
-                return ApiResultHelper.Error("This User information does not exist.");
+                return ApiResultHelper.Error("This Customer information does not exist.");
             return ApiResultHelper.Success(data);
         }
 
         [HttpPost("Insert")]
-        public async Task<ActionResult<ApiResult>> Insert([FromBody] User value)
+        public async Task<ActionResult<ApiResult>> Insert([FromBody] Customer value)
         {
-            bool res = await _UserService.InserItem(value);
+            bool res = await _CustomerService.InserItem(value);
             if (!res)
                 return ApiResultHelper.Error("Fill to add: Server error occurred");
             return ApiResultHelper.Success(res);
         }
 
         [HttpDelete("DeleteById")]
-        public async Task<ActionResult<ApiResult>> DeleteByUserId(string id)
+        public async Task<ActionResult<ApiResult>> DeleteByCustomerId(Helper value)
         {
-            bool res = await _UserService.DeleteItem(c => c.Id == id);
+            bool res = await _CustomerService.DeleteItem(c => c.id == value.id);
             if (!res) return ApiResultHelper.Error("failed to delete");
             return ApiResultHelper.Success(res);
         }
 
         [HttpPut("Edit")]
-        public async Task<ApiResult> Edit([FromBody] User value)
+        public async Task<ApiResult> Edit([FromBody] Customer value)
         {
-            User data = (await _UserService.FindItem(c => c.Id == value.Id));
-            if (data == null) return ApiResultHelper.Error("This User information does not exist.");
+            Customer data = (await _CustomerService.FindItem(c => c.id == value.id));
+            if (data == null) return ApiResultHelper.Error("This Customer information does not exist.");
 
-            bool res = await _UserService.EditItem(data);
-            if (!res) return ApiResultHelper.Error("Failed to modify User information:Server error occurred");
+            bool res = await _CustomerService.EditItem(data);
+            if (!res) return ApiResultHelper.Error("Failed to modify Customer information:Server error occurred");
             return ApiResultHelper.Success(res);
         }
     }

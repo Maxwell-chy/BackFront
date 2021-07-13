@@ -4,6 +4,7 @@ using Result;
 using StuManage.Model;
 using StuManage.Service;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -13,29 +14,28 @@ namespace StuManage.JWT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthoizeController : ControllerBase
+    public class AuthorizeController : ControllerBase
     {
-        private readonly UserService _userService;
-        public AuthoizeController(UserService userService)
+        private readonly CustomerService _CustomerService;
+        public AuthorizeController(CustomerService CustomerService)
         {
-            _userService = userService;
+            _CustomerService = CustomerService;
         }
 
         [HttpPost("Login")]
         public async Task<ApiResult> Login([FromBody] Helper value)
         {
-            User data = await _userService.FindItem(c => c.Id == value.Id && c.PassWord == value.PassWord);
+            Customer data = await _CustomerService.FindItem(c => c.id == value.Id && c.password == value.password);
 
             if (data != null)
             {
                 // 登录成功
                 var claims = new Claim[]
                 {
-                    new Claim("Id", data.Id.ToString()),
+                    new Claim("id", data.id.ToString()),
                 };
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("GBTR-OEUR1-DCS-UYTGR-SDFGTRE-ES"));
-                //issuer代表颁发Token的Web应用程序，audience是Token的受理者
                 var token = new JwtSecurityToken(
                     issuer: MySetting.Mysetting.issuerURL,
                     audience: MySetting.Mysetting.audienceURL,
@@ -45,12 +45,14 @@ namespace StuManage.JWT.Controllers
                     signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256)
                 );
                 var jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
-                return ApiResultHelper.Success(jwtToken);
+                Dictionary<string, string> result = new Dictionary<string, string>();
+                result.Add("id", data.id.ToString());
+                result.Add("token", jwtToken);
+                return ApiResultHelper.Success(result);
 
             }
             else
             {
-                //登录失败
                 return ApiResultHelper.Error("Incorrect account or password");
             }
 

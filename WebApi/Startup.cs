@@ -107,18 +107,8 @@ namespace StuManage.WebApi
     {
         public static IServiceCollection AddCustomIOC(this IServiceCollection services)
         {
-            services.AddScoped<StudentRepository>();
-            services.AddScoped<StudentService>();
-            services.AddScoped<CompetitionRepository>();
-            services.AddScoped<CompetitionService>();
-            services.AddScoped<ScoreRepository>();
-            services.AddScoped<ScoreService>();
-            services.AddScoped<ExaminformationRepository>();
-            services.AddScoped<ExaminformationService>();
-            services.AddScoped<AnnounceRepository>();
-            services.AddScoped<AnnounceService>();
-            services.AddScoped<UserRepository>();
-            services.AddScoped<UserService>();
+            services.AddScoped<CustomerRepository>();
+            services.AddScoped<CustomerService>();
             return services;
         }
         public static IServiceCollection AddCustomJWT(this IServiceCollection services)
