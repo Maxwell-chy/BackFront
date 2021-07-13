@@ -15,8 +15,8 @@ namespace StuManage.Repository
         {
             base.Context = DbScoped.Sugar;
             base.Context.CodeFirst.InitTables(
-            //typeof(Customer),
-            //typeof(Score)
+            typeof(Customer),
+            typeof(Score)
             );
         }
         public async Task<bool> InsertItem(TEntity entity)

@@ -32,10 +32,10 @@ namespace StuManage.WebApi.Controllers
             return ApiResultHelper.Success(List);
         }
 
-        [HttpGet("GetById")]
-        public async Task<ActionResult<ApiResult>> GetByCustomerId(string id)
+        [HttpPost("GetById")]
+        public async Task<ActionResult<ApiResult>> GetByCustomerId([FromBody]Helper value)
         {
-            Customer data = await _CustomerService.FindItem(c => c.id == id);
+            Customer data = await _CustomerService.FindItem(c => c.id == value.id);
             if (data == null)
                 return ApiResultHelper.Error("This Customer information does not exist.");
             return ApiResultHelper.Success(data);
