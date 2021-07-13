@@ -31,7 +31,7 @@ namespace WebApi.Controllers
         [HttpPost("GetByExamid")]
         public async Task<ActionResult<ApiResult>> GetByExamid([FromBody] Helper value)
         {
-            Score data = await _ScoreService.FindItem(c => c.id == value.id && c.examid == value.examid);
+            var data = await _ScoreService.FindItemList(c => c.id == value.id && c.examid == value.examid);
             if (data == null)
                 return ApiResultHelper.Error("This Score information does not exist.");
             return ApiResultHelper.Success(data);
