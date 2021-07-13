@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Model;
 using Result;
-using StuManage.Model;
-using StuManage.Service;
-using System;
+using Service;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace StuManage.WebApi.Controllers
+namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -33,7 +29,7 @@ namespace StuManage.WebApi.Controllers
         }
 
         [HttpPost("GetById")]
-        public async Task<ActionResult<ApiResult>> GetByCustomerId([FromBody]Helper value)
+        public async Task<ActionResult<ApiResult>> GetByCustomerId([FromBody] Helper value)
         {
             Customer data = await _CustomerService.FindItem(c => c.id == value.id);
             if (data == null)

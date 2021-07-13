@@ -1,10 +1,10 @@
-﻿using StuManage.Repository;
+﻿using Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace StuManage.Service
+namespace Service
 {
     public class BaseService<TEntity> where TEntity : class, new()
     {

@@ -1,6 +1,8 @@
-﻿using StuManage.Model;
+﻿
+using Model;
 
-namespace StuManage.Repository
+namespace Repository
 {
     public class CustomerRepository : BaseRepository<Customer> { }
+    public class ScoreRepository : BaseRepository<Score> { }
 }

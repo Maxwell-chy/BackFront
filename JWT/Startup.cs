@@ -4,11 +4,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Repository;
+using Service;
 using SqlSugar.IOC;
-using StuManage.Repository;
-using StuManage.Service;
 
-namespace StuManage.JWT
+
+namespace JWT
 {
     public class Startup
     {

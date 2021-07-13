@@ -6,14 +6,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Repository;
+using Service;
 using SqlSugar.IOC;
-using StuManage.Repository;
-using StuManage.Service;
 using System;
 using System.Text;
 
 
-namespace StuManage.WebApi
+namespace WebApi
 {
     public class Startup
     {

@@ -1,13 +1,12 @@
 ﻿using Model;
 using SqlSugar;
 using SqlSugar.IOC;
-using StuManage.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace StuManage.Repository
+namespace Repository
 {
     public class BaseRepository<TEntity> : SimpleClient<TEntity> where TEntity : class, new()
     {

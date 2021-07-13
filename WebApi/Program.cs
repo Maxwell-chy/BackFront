@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace StuManage.WebApi
+namespace WebApi
 {
     public class Program
     {

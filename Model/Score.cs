@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SqlSugar;
-namespace Model
+﻿namespace Model
 {
     public class Score
     {
-        
+        public string id { get; set; }
         public string examid { get; set; }
         public string name { get; set; }
         public float chinese { get; set; }

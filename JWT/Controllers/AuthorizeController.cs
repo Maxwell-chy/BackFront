@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Model;
 using Result;
-using StuManage.Model;
-using StuManage.Service;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StuManage.JWT.Controllers
+namespace JWT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,7 +25,7 @@ namespace StuManage.JWT.Controllers
         [HttpPost("Login")]
         public async Task<ApiResult> Login([FromBody] Helper value)
         {
-            Customer data = await _CustomerService.FindItem(c => c.id == value.Id && c.password == value.password);
+            Customer data = await _CustomerService.FindItem(c => c.id == value.id && c.password == value.password);
 
             if (data != null)
             {

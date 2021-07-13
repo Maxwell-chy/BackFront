@@ -1,8 +1,8 @@
 ﻿
-using StuManage.Model;
-using StuManage.Repository;
+using Model;
+using Repository;
 
-namespace StuManage.Service
+namespace Service
 {
     public class CustomerService : BaseService<Customer>
     {
@@ -11,6 +11,15 @@ namespace StuManage.Service
         {
             base.baseRepository = CustomerRepository;
             _CustomerRepository = CustomerRepository;
+        }
+    }
+    public class ScoreService : BaseService<Score>
+    {
+        private readonly ScoreRepository _ScoreRepository;
+        public ScoreService(ScoreRepository scoreRepository)
+        {
+            base.baseRepository = scoreRepository;
+            _ScoreRepository = scoreRepository;
         }
     }
 

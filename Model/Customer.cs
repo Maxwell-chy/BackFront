@@ -1,5 +1,5 @@
 ﻿using SqlSugar;
-namespace StuManage.Model
+namespace Model
 {
     public class Customer
     {
