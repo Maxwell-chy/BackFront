@@ -111,6 +111,12 @@ namespace WebApi
             services.AddScoped<CustomerService>();
             services.AddScoped<ScoreRepository>();
             services.AddScoped<ScoreService>();
+            services.AddScoped<AnnounceRepository>();
+            services.AddScoped<AnnounceService>();
+            services.AddScoped<StuExamRepository>();
+            services.AddScoped<StuExamService>();
+            services.AddScoped<ExamInfoRepository>();
+            services.AddScoped<ExamInfoService>();
             return services;
         }
         public static IServiceCollection AddCustomJWT(this IServiceCollection services)

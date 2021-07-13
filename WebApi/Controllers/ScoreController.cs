@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Model;
 using Result;
 using Service;
@@ -9,7 +10,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ScoreController : ControllerBase
     {
         private readonly ScoreService _ScoreService;
@@ -42,6 +43,7 @@ namespace WebApi.Controllers
             var data = await _ScoreService.FindItemList(c => c.id == value.id);
             if (data == null)
                 return ApiResultHelper.Error("This Score information does not exist.");
+            data.Sort();
             return ApiResultHelper.Success(data);
         }
         [HttpPost("Insert")]
