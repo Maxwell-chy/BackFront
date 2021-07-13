@@ -11,7 +11,7 @@ namespace StuManage.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class AnnounceController : ControllerBase
     {
         private readonly AnnounceService _announceService;

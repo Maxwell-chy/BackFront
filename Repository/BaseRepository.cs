@@ -13,14 +13,14 @@ namespace StuManage.Repository
         public BaseRepository(ISqlSugarClient context = null) : base(context)
         {
             base.Context = DbScoped.Sugar;
-            base.Context.CodeFirst.InitTables(
-            typeof(Student),
-                typeof(Competition),
-                typeof(Score),
-            typeof(Examinformation),
-            typeof(Announce),
-            typeof(User)
-            );
+            //base.Context.CodeFirst.InitTables(
+            //typeof(Student),
+            //    typeof(Competition),
+            //    typeof(Score),
+            //typeof(Examinformation),
+            //typeof(Announce),
+            //typeof(User)
+            //);
         }
         public async Task<bool> InsertItem(TEntity entity)
         {

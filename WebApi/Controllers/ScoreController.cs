@@ -10,7 +10,7 @@ namespace StuManage.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ScoreController : ControllerBase
     {
         private readonly ScoreService _scoreService;
@@ -24,6 +24,7 @@ namespace StuManage.WebApi.Controllers
         public async Task<ActionResult<ApiResult>> GetList()
         {
             List<Score> List = await _scoreService.FindItemList();
+            List.Sort();
             if (List == null)
                 return ApiResultHelper.Error("There is no any Scores information in DB");
             return ApiResultHelper.Success(List);

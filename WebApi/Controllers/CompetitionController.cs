@@ -13,7 +13,7 @@ namespace StuManage.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class CompetitionController : ControllerBase
     {
         private readonly CompetitionService _competitionService;
