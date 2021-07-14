@@ -23,5 +23,6 @@ namespace Repository
         }
 
     }
-    
+    public class StudentRepository : BaseRepository<Student> { }
+
 }

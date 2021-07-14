@@ -49,4 +49,13 @@ namespace Service
             _StuExamRepository = StuExamRepository;
         }
     }
+    public class StudentService : BaseService<Student>
+    {
+        private readonly StudentRepository _StudentRepository;
+        public StudentService(StudentRepository StudentRepository)
+        {
+            base.baseRepository = StudentRepository;
+            _StudentRepository = StudentRepository;
+        }
+    }
 }

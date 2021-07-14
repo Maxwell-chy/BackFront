@@ -28,6 +28,14 @@ namespace WebApi.Controllers
                 return ApiResultHelper.Error("There is no any StuExams information in DB");
             return ApiResultHelper.Success(List);
         }
+        [HttpPost("GetById")]
+        public async Task<ActionResult<ApiResult>> GetById([FromBody] StuExam value)
+        {
+            List<StuExam> List = await _StuExamService.FindItemList(c=>c.id==value.id);
+            if (List == null)
+                return ApiResultHelper.Error("There is no any StuExams information in DB");
+            return ApiResultHelper.Success(List);
+        }
         [HttpPost("Insert")]
         public async Task<ActionResult<ApiResult>> Insert([FromBody] StuExam value)
         {
