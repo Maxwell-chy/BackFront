@@ -86,5 +86,14 @@ namespace Service
             _QuestionRepository = QuestionRepository;
         }
     }
+    public class AnswerService : BaseService<Answer>
+    {
+        private readonly AnswerRepository _AnswerRepository;
+        public AnswerService(AnswerRepository AnswerRepository)
+        {
+            base.baseRepository = AnswerRepository;
+            _AnswerRepository = AnswerRepository;
+        }
+    }
 
 }

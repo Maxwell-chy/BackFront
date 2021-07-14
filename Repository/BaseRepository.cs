@@ -22,7 +22,8 @@ namespace Repository
             typeof(Student),
             typeof(CompInfo),
             typeof(StuComp),
-            typeof(Question)
+            typeof(Question),
+            typeof(Answer)
             );
         }
         public async Task<bool> InsertItem(TEntity entity)

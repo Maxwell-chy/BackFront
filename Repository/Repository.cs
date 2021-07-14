@@ -35,5 +35,6 @@ namespace Repository
         }
     }
     public class QuestionRepository : BaseRepository<Question> { }
+    public class AnswerRepository : BaseRepository<Answer> { }
 
 }

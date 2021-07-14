@@ -44,6 +44,13 @@ namespace WebApi.Controllers
             if (data == null)
                 return ApiResultHelper.Error("This Score information does not exist.");
             data.Sort();
+           foreach(Score p in data)
+            {
+                p.totalGrade = p.chinese + p.math + p.english + p.physics
+                + p.chemistry + p.biology + p.politics + p.history + p.geography;
+            }
+
+            
             return ApiResultHelper.Success(data);
         }
 
@@ -54,12 +61,18 @@ namespace WebApi.Controllers
             if (data == null)
                 return ApiResultHelper.Error("This Score information does not exist.");
             data.Sort();
+            foreach (Score p in data)
+            {
+                p.totalGrade = p.chinese + p.math + p.english + p.physics
+                + p.chemistry + p.biology + p.politics + p.history + p.geography;
+            }
             return ApiResultHelper.Success(data);
         }
         [HttpDelete("DeleteById")]
         public async Task<ActionResult<ApiResult>> DeleteByScoreId(Helper value)
         {
             bool res = await _ScoreService.DeleteItem(c => c.id == value.id);
+     
             if (!res) return ApiResultHelper.Error("failed to delete");
             return ApiResultHelper.Success(res);
         }
