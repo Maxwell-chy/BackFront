@@ -10,7 +10,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class ScoreController : ControllerBase
     {
         private readonly ScoreService _ScoreService;
@@ -50,12 +50,20 @@ namespace WebApi.Controllers
         [HttpPost("GetAllByExamid")]
         public async Task<ActionResult<ApiResult>> GetAllByExamid([FromBody] Helper value)
         {
-            var data = await _ScoreService.FindItemList(c => c.examid == value.examid);
+            List<Score> data = await _ScoreService.FindItemList(c => c.examid == value.examid);
             if (data == null)
                 return ApiResultHelper.Error("This Score information does not exist.");
             data.Sort();
             return ApiResultHelper.Success(data);
         }
+        [HttpDelete("DeleteById")]
+        public async Task<ActionResult<ApiResult>> DeleteByScoreId(Helper value)
+        {
+            bool res = await _ScoreService.DeleteItem(c => c.id == value.id);
+            if (!res) return ApiResultHelper.Error("failed to delete");
+            return ApiResultHelper.Success(res);
+        }
+
         [HttpPost("Insert")]
         public async Task<ActionResult<ApiResult>> Insert([FromBody] Score value)
         {
