@@ -10,7 +10,7 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class StudentController : ControllerBase
     {
         private readonly StudentService _StudentService;
@@ -28,25 +28,24 @@ namespace WebApi.Controllers
                 return ApiResultHelper.Error("There is no any Students information in DB");
             return ApiResultHelper.Success(List);
         }
-
-       
-        [HttpPost("GetById")]
-        public async Task<ActionResult<ApiResult>> GetById([FromBody] Helper value)
-        {
-            var data = await _StudentService.FindItemList(c => c.id == value.id);
-            if (data == null)
-                return ApiResultHelper.Error("This Student information does not exist.");
-            data.Sort();
-            return ApiResultHelper.Success(data);
-        }
-
         [HttpPost("Insert")]
         public async Task<ActionResult<ApiResult>> Insert([FromBody] Student value)
         {
+            Student data = await _StudentService.FindItem(t=>value.id == t.id);
+            if(data != null)
+                return ApiResultHelper.Error("Fill to add: same student exits");
             bool res = await _StudentService.InserItem(value);
             if (!res)
                 return ApiResultHelper.Error("Fill to add: Server error occurred");
             return ApiResultHelper.Success(res);
         }
+        [HttpDelete("DeleteById")]
+        public async Task<ActionResult<ApiResult>> DeleteById(Helper value)
+        {
+            bool res = await _StudentService.DeleteItem(c => c.id == value.id);
+            if (!res) return ApiResultHelper.Error("failed to delete");
+            return ApiResultHelper.Success(res);
+        }
+
     }
 }

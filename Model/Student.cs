@@ -7,6 +7,6 @@ namespace Model
         public string id { get; set; }
         public string name { get; set; }
         public string  year { get; set; }
-        public string classsid { get; set; }
+        public string classid { get; set; }
     }
 }
