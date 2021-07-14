@@ -47,5 +47,14 @@ namespace WebApi.Controllers
             return ApiResultHelper.Success(res);
         }
 
+        [HttpPost("GetById")]
+        public async Task<ActionResult<ApiResult>> GetById([FromBody] Helper value)
+        {
+            Student data = await _StudentService.FindItem(c => c.id == value.id);
+            if (data == null)
+                return ApiResultHelper.Error("This Student information does not exist.");
+            return ApiResultHelper.Success(data);
+        }
+
     }
 }

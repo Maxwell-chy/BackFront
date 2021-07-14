@@ -24,5 +24,15 @@ namespace Repository
 
     }
     public class StudentRepository : BaseRepository<Student> { }
+    public class CompInfoRepository : BaseRepository<CompInfo> { }
+    public class StuCompRepository : BaseRepository<StuComp> {
+        public override async Task<List<StuComp>> FindItemList(Expression<Func<StuComp, bool>> func)
+        {
+            return await base.Context.Queryable<StuComp>()
+                .Where(func)
+        .Mapper(c => c.compInfo, c => c.compname, c => c.compInfo.compname)
+       .ToListAsync();
+        }
+    }
 
 }

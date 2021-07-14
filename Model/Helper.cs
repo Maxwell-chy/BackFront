@@ -5,5 +5,6 @@
         public string id { get; set; }
         public string password { get; set; }
         public string examid { get; set; }
+        public string compname { get; set; }
     }
 }

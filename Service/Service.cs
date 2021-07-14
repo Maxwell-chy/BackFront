@@ -58,5 +58,24 @@ namespace Service
             _StudentRepository = StudentRepository;
         }
     }
+    public class CompInfoService : BaseService<CompInfo>
+    {
+        private readonly CompInfoRepository _CompInfoRepository;
+        public CompInfoService(CompInfoRepository CompInfoRepository)
+        {
+            base.baseRepository = CompInfoRepository;
+            _CompInfoRepository = CompInfoRepository;
+        }
+    }
+
+    public class StuCompService : BaseService<StuComp>
+    {
+        private readonly StuCompRepository _StuCompRepository;
+        public StuCompService(StuCompRepository StuCompRepository)
+        {
+            base.baseRepository = StuCompRepository;
+            _StuCompRepository = StuCompRepository;
+        }
+    }
 
 }

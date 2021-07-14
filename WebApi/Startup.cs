@@ -119,6 +119,10 @@ namespace WebApi
             services.AddScoped<StuExamService>();
             services.AddScoped<StudentRepository>();
             services.AddScoped<StudentService>();
+            services.AddScoped<CompInfoRepository>();
+            services.AddScoped<CompInfoService>();
+            services.AddScoped<StuCompRepository>();
+            services.AddScoped<StuCompService>();
 
             return services;
         }
