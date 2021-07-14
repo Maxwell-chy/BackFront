@@ -77,5 +77,14 @@ namespace Service
             _StuCompRepository = StuCompRepository;
         }
     }
+    public class QuestionService : BaseService<Question>
+    {
+        private readonly QuestionRepository _QuestionRepository;
+        public QuestionService(QuestionRepository QuestionRepository)
+        {
+            base.baseRepository = QuestionRepository;
+            _QuestionRepository = QuestionRepository;
+        }
+    }
 
 }

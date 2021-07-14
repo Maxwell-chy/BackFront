@@ -123,6 +123,8 @@ namespace WebApi
             services.AddScoped<CompInfoService>();
             services.AddScoped<StuCompRepository>();
             services.AddScoped<StuCompService>();
+            services.AddScoped<QuestionRepository>();
+            services.AddScoped<QuestionService>();
 
             return services;
         }

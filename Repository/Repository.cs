@@ -34,5 +34,6 @@ namespace Repository
        .ToListAsync();
         }
     }
+    public class QuestionRepository : BaseRepository<Question> { }
 
 }
