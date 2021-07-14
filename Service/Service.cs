@@ -96,4 +96,13 @@ namespace Service
         }
     }
 
+    public class TeacherService : BaseService<Teacher>
+    {
+        private readonly TeacherRepository _TeacherRepository;
+        public TeacherService(TeacherRepository TeacherRepository)
+        {
+            base.baseRepository = TeacherRepository;
+            _TeacherRepository = TeacherRepository;
+        }
+    }
 }

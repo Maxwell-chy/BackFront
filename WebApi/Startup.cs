@@ -127,6 +127,8 @@ namespace WebApi
             services.AddScoped<QuestionService>();
             services.AddScoped<AnswerRepository>();
             services.AddScoped<AnswerService>();
+            services.AddScoped<TeacherRepository>();
+            services.AddScoped<TeacherService>();
 
             return services;
         }
