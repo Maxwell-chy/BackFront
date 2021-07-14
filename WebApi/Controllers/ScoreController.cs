@@ -46,6 +46,16 @@ namespace WebApi.Controllers
             data.Sort();
             return ApiResultHelper.Success(data);
         }
+
+        [HttpPost("GetAllByExamid")]
+        public async Task<ActionResult<ApiResult>> GetAllByExamid([FromBody] Helper value)
+        {
+            var data = await _ScoreService.FindItemList(c => c.examid == value.examid);
+            if (data == null)
+                return ApiResultHelper.Error("This Score information does not exist.");
+            data.Sort();
+            return ApiResultHelper.Success(data);
+        }
         [HttpPost("Insert")]
         public async Task<ActionResult<ApiResult>> Insert([FromBody] Score value)
         {

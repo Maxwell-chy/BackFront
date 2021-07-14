@@ -14,8 +14,11 @@ namespace Repository
         {
             base.Context = DbScoped.Sugar;
             base.Context.CodeFirst.InitTables(
+            typeof(Announce),
             typeof(Customer),
-            typeof(Score)
+            typeof(ExamInfo),
+            typeof(Score),
+            typeof(StuExam)
             );
         }
         public async Task<bool> InsertItem(TEntity entity)
@@ -39,7 +42,7 @@ namespace Repository
             return await base.GetByIdAsync(id);
         }
 
-        public async Task<TEntity> FindItem(Expression<Func<TEntity, bool>> func)
+        public virtual async Task<TEntity> FindItem(Expression<Func<TEntity, bool>> func)
         {
             return await base.GetSingleAsync(func);
         }

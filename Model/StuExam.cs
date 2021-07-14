@@ -9,6 +9,11 @@ namespace Model
         public string subject { get; set; }
         public string place { get; set; }
         public string seat { get; set; }
+
+        [SugarColumn(IsIgnore =true)]
+        public ExamInfo exam { get; set; }
+        [SugarColumn(IsIgnore =true)]
+        public ExamInfo subj { get; set; }
     }
 }
 
